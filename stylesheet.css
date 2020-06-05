@@ -2802,4 +2802,5 @@ https://flickity.metafizzy.co
   
   .similar-products-header {
     right: 10%;
+    text-transform: capitalize;
   }
