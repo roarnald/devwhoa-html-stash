@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <title>{{ page.name }} | {{ store.name }}</title> -->
+    <title>{{ store.name }} | Decorate Your Personality with Quirky Earrings by Whoaa Store</title>
+    
+    <meta name="robots" content="index, follow">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="icon" type="image/png" href=" https://i.imgur.com/OtQ1Je3.png"/>
+   
+    <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
+    {{ head_content }}
+  
+    <meta property="og:image" content="https://i.imgur.com/Q26IihK.jpg" />
+
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '277253880136007'); 
+    fbq('track', 'PageView');
+  </script>
+    <noscript>
+    <img height="1" width="1" 
+    src="https://www.facebook.com/tr?id=277253880136007&ev=PageView
+    &noscript=1"/>
+  </noscript>
+    <!-- End Facebook Pixel Code -->
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168841967-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'UA-168841967-1');
+  </script>
+    
+
+  </head>
+  <body id="{{ page.permalink }}" class="{% if errors != blank %}has-header-message{% endif %} {{ page.category }} {% if page.permalink == 'home' and theme.welcome_image != blank or theme.welcome_header != blank or theme.welcome_subheader != blank %}has-welcome{% endif %}">
+    <!-- Links to Insta -->
+    <script type="application/ld+json">
+      {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "whoaa! store",
+      "url": "https://www.whoaa.store/",
+      "address": "",
+      "sameAs": [
+      "https://www.instagram.com/whoaa.store/"
+      ]
+      }
+    </script>
+    
+    <div class="wrap">
+      {% if errors != blank %}
+        <div class="header-message">
+          <div class="errors {{ page.permalink }}-errors">
+            <div class="error-list">
+              {% for error in errors %}
+                <div class="error-item">{{ error }}</div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      {% if theme.announcement_message_text != blank %}
+        <div class="header-message">
+          <div class="announcement-message">
+              <div class="announcement-message-text">{{ theme.announcement_message_text }}</div>
+              <button class="announcement-message-close" title="Close announcement message">
+              <svg width="14" height="14" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.20710678.79289322L10 8.585 17.7928932.79289322c.360484-.36048396.927715-.3882135 1.3200062-.0831886l.0942074.0831886c.3905243.39052429.3905243 1.02368927 0 1.41421356L11.415 10l7.7921068 7.7928932c.3905243.3905243.3905243 1.0236893 0 1.4142136-.3905243.3905243-1.0236893.3905243-1.4142136 0L10 11.415l-7.79289322 7.7921068c-.36048396.3604839-.92771502.3882135-1.32000622.0831886l-.09420734-.0831886c-.3905243-.3905243-.3905243-1.0236893 0-1.4142136L8.585 10 .79289322 2.20710678c-.3905243-.39052429-.3905243-1.02368927 0-1.41421356.39052429-.3905243 1.02368927-.3905243 1.41421356 0z" fill-rule="nonzero"/></svg>
+            </button>
+          </div>
+        </div>
+      {% endif %}
+      <div class="mobile-header">
+        <button class="open-menu hamburger hamburger--squeeze" type="button" title="Open menu">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+        <div class="header-store{% if theme.logo != blank %} has-logo{% else %} has-text{% endif %}">
+          <a href="/" title="{{ store.name | escape }}" class="header-store-link">
+            {% if theme.logo != blank %}
+            <img class="header-store-logo" alt="{{ store.name }}" src="{{ theme.images.logo.url | constrain: 400, 400 }}">
+            {% else %}
+            <span class="header-store-name">{{ store.name }}</span>
+            {% endif %}
+          </a>
+          {% if theme.logo != blank %}
+            <div class="gradient"></div>
+            <div class="gradient"></div>
+          {% endif %}
+        </div>
+        <button class="button header-cart-count open-mini-cart" title="View cart">{{ cart.item_count }}</button>
+      </div>
+
+      <div class="desktop-header-store-name">
+        <div class="desktop-header header-store{% if theme.logo != blank %} has-logo{% else %} has-text{% endif %}">
+          <a href="/" title="{{ store.name | escape }}" class="header-store-link">
+            {% if theme.logo != blank %}
+            <img class="header-store-logo" src="{{ theme.images.logo.url | constrain: 400, 400 }}" alt="{{ store.name }}">
+            {% else %}
+            <span class="header-store-name">{{ store.name }}</span>
+            {% endif %}
+          </a>
+          <div class="gradient"></div>
+          <div class="gradient"></div>
+        </div>
+      </div>
+
+      <div class="desktop-cart header-cart">
+        <button class="header-cart-info open-mini-cart" title="View cart">
+          <span class="header-cart-count">{{ cart.item_count }}</span>
+          <span class="header-cart-total">{{ cart.total | money: theme.money_format }}</span>
+        </button>
+        {% if page.permalink != 'cart' %}
+          <div class="mini-cart-container cart-container gradient{% if cart.item_count == 0 %} empty-cart{% endif %}">
+            <div class="page-title cart-title">Cart</div>
+            <button class="cart-close" type="button"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.20710678.79289322L10 8.585 17.7928932.79289322c.360484-.36048396.927715-.3882135 1.3200062-.0831886l.0942074.0831886c.3905243.39052429.3905243 1.02368927 0 1.41421356L11.415 10l7.7921068 7.7928932c.3905243.3905243.3905243 1.0236893 0 1.4142136-.3905243.3905243-1.0236893.3905243-1.4142136 0L10 11.415l-7.79289322 7.7921068c-.36048396.3604839-.92771502.3882135-1.32000622.0831886l-.09420734-.0831886c-.3905243-.3905243-.3905243-1.0236893 0-1.4142136L8.585 10 .79289322 2.20710678c-.3905243-.39052429-.3905243-1.02368927 0-1.41421356.39052429-.3905243 1.02368927-.3905243 1.41421356 0z" fill-rule="nonzero"/></svg></button>
+            {% if cart.items != blank %}
+              <form method="post" action="/cart" id="cart-form" class="cart-form">
+                <ul class="cart-items">
+                  {% for item in cart.items %}
+                    <li class="cart-item" data-item-id="{{ item.id }}">
+                      <div class="cart-item-image-holder">
+                        <a class="cart-item-image" href="{{ item.product.url }}" title="View {{ item.product.name | escape }}" style="background-image:url('{{ item.product.image | product_image_url | constrain: 576, 576 }}');"></a>
+                      </div>
+                      <div class="cart-item-details">
+                        <div class="cart-item-details-name">{{ item.product.name }}</div>
+                        {% unless item.product.has_default_option %}
+                          <div class="cart-item-details-option">{{ item.option.name }}</div>
+                        {% endunless %}
+                      </div>
+                      <div class="cart-item-quantity-holder" data-item-id="{{ item.id }}">
+                        <button class="decrease-qty-button qty-button" data-func="minus" type="button"><svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><path d="M7.984 16.089a.728.728 0 0 1-.726-.726v-.726c0-.4.327-.726.726-.726h14.032c.4 0 .726.327.726.726v.726c0 .4-.327.726-.726.726H7.984zM30 15c0 8.286-6.714 15-15 15S0 23.286 0 15 6.714 0 15 0s15 6.714 15 15zm-1.935 0c0-7.252-5.886-13.065-13.065-13.065C7.748 1.935 1.935 7.821 1.935 15c0 7.252 5.886 13.065 13.065 13.065 7.252 0 13.065-5.886 13.065-13.065z"/></svg></button>
+                        {{ item | item_quantity_input, 'option-quantity', 'option-quantity' }}
+                        <button class="increase-qty-button qty-button" data-func="plus" type="button"><svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><path d="M22.742 14.637v.726c0 .4-.327.726-.726.726H16.09v5.927c0 .4-.327.726-.726.726h-.726a.728.728 0 0 1-.726-.726V16.09H7.984a.728.728 0 0 1-.726-.726v-.726c0-.4.327-.726.726-.726h5.927V7.984c0-.4.327-.726.726-.726h.726c.4 0 .726.327.726.726v5.927h5.927c.4 0 .726.327.726.726zM30 15c0 8.286-6.714 15-15 15S0 23.286 0 15 6.714 0 15 0s15 6.714 15 15zm-1.935 0c0-7.252-5.886-13.065-13.065-13.065C7.748 1.935 1.935 7.821 1.935 15c0 7.252 5.886 13.065 13.065 13.065 7.252 0 13.065-5.886 13.065-13.065z"/></svg></button>
+                      </div>
+                      <div class="cart-item-details-price subheader">{{ item.unit_price | money: theme.money_format }}</div>
+                    </li>
+                  {% endfor %}
+                </ul>
+                <div class="cart-footer">
+                  <div class="cart-subtotal">
+                    <span class="cart-subtotal-label">Subtotal:</span>
+                    <span class="cart-subtotal-amount"><span class="cart-subtotal-amount-value">{{ cart.total | money: theme.money_format }}</span></span>
+                  </div>
+                  <div class="cart-buttons">
+                    <a class="continue-shopping" href="/products"><svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M229.9 473.899l19.799-19.799c4.686-4.686 4.686-12.284 0-16.971L94.569 282H436c6.627 0 12-5.373 12-12v-28c0-6.627-5.373-12-12-12H94.569l155.13-155.13c4.686-4.686 4.686-12.284 0-16.971L229.9 38.101c-4.686-4.686-12.284-4.686-16.971 0L3.515 247.515c-4.686 4.686-4.686 12.284 0 16.971L212.929 473.9c4.686 4.686 12.284 4.686 16.971-.001z"></path></svg> Continue Shopping</a>
+                    <button type="submit" name="checkout" title="Checkout" class="button checkout-btn">Checkout</button>
+                  </div>
+                </div>
+              </form>
+            {% endif %}
+            <div class="cart-empty-message">
+              <div class="emoji-container">
+                <img class="ghost-emoji" src="{{ 'ghost-emoji.png' | theme_image_url }}" alt="Ghost Emoji" aria-hidden="true">
+              </div>
+              <strong>Your cart is empty!</strong>
+              <a class="button" href="/">Start shopping</a>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      {% if errors != blank %}
+        <div class="header-message mobile-header-message">
+          <div class="errors {{ page.permalink }}-errors">
+            <div class="error-list">
+              {% for error in errors %}
+                <div class="error-item">{{ error }}</div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      {% if theme.announcement_message_text != blank %}
+        <div class="header-message mobile-header-message">
+          <div class="announcement-message">
+            <div class="announcement-message-text">{{ theme.announcement_message_text }}</div>
+            <button class="announcement-message-close" title="Close announcement message">
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+            </button>
+          </div>
+        </div>
+      {% endif %}
+      {% if page.permalink == 'home' %}
+        {% if theme.welcome_image != blank or theme.welcome_header != blank or theme.welcome_subheader != blank %}
+          <section class="home-welcome welcome gradient">
+            <div class="welcome-messaging">
+              {% if theme.welcome_subheader != blank  %}<p class="subheader"><h1 style="font-size: 22px;">{{ theme.welcome_subheader }}</h1></p>{% endif %}
+              {% if theme.welcome_header != blank  %}<h2 class="headline">{{ theme.welcome_header }}</h2>{% endif %}
+              {% if theme.welcome_button_text != blank %}<a href="/products" class="button">{{ theme.welcome_button_text }}</a>{% endif %}
+            </div>
+            <div class="pattern {{ theme.welcome_overlay }}"></div>
+            {% if theme.welcome_image != blank %}
+              <div class="welcome-image">
+                <img alt="Welcome image" src="{{ theme.welcome_image.url | constrain: 1800 }}">
+              </div>
+            {% endif %}
+          </section>
+        {% endif %}
+      {% endif %}
+      <div class="main">
+        <div class="sidebar">
+          <div class="side-nav">
+            <nav class="side-nav-section category-nav">
+              <button class="category-nav-title">Categories <svg aria-hidden="true" focusable="false" class="down-arrow" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M441.9 250.1l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L250 385.4V44c0-6.6-5.4-12-12-12h-28c-6.6 0-12 5.4-12 12v341.4L42.9 230.3c-4.7-4.7-12.3-4.7-17 0L6.1 250.1c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"></path></svg></button>
+              <ul class="unstyled category-nav-items">
+                <li class="{% if page.full_url contains '/products' %}selected{% endif %}"><a href="/products">All</a></li>
+                {% for category in categories.active %}
+                  <li class="{% if page.full_url contains category.url %}selected{% endif %}">{{ category | link_to }}</li>
+                {% endfor %}
+                {% for artist in artists.active %}
+                  <li class="{% if page.full_url contains artist.url %}selected{% endif %}">{{ artist | link_to }}</li>
+                {% endfor %}
+              </ul>
+            </nav>
+
+            {% if theme.show_search %}
+              <div class="side-nav-section side-search">
+                <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8">
+                  <input type="hidden" name="utf8" value='✓'>
+                  <input aria-label="Search products" class="search-input" id="search" name="search" type="text" placeholder="Search" autocomplete="off" />
+                  <button type="submit" class="button search-button" title="Search">
+                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"></path></svg></button>
+                </form>
+              </div>
+            {% endif %}
+
+            <nav class="side-nav-section pages-nav">
+              <ul class="unstyled page-nav-items">
+              <li class="hide-mobile"><a href="/cart" title="Cart">Cart</a></li>
+              {% for page in pages.all %}
+                <li>{{ page | link_to }}</li>
+              {% endfor %}
+              <li><a href="/contact" title="Contact">Contact</a></li>
+              {% if store.website != blank %}
+                <li><a href="{{ store.website }}">Back to Site</a></li>
+              {% endif %}
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="content" role="main">
+          {% if page.category == 'custom' %}
+            <div class="custom-page">
+              <h1 class="page-title">{{ page.name }}</h1>
+              <div class="custom-page-content">
+                {{ page_content | paragraphs }}
+
+                {% if page.name == theme.lookbook_page_name %}
+                  {% if theme.image_sets.lookbook_images.size > 0 %}
+                    <div class="lookbook-gallery">
+                      {% for image in theme.image_sets.lookbook_images %}
+                        <img class="lookbook-gallery-image" src="{{ image.url | constrain: '1400', '' }}">
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          {% else %}
+            {{ page_content }}
+          {% endif %}
+        </div>
+      </div>
+      {% if page.full_url contains '/product/' %}
+        {% if theme.show_similar_products %}
+          {% if product.categories != blank %}
+            {% for category in product.categories %}
+              {% capture product_divs %}
+                {% for category_product in category.products %}
+                  {% assign product_status = '' %}
+                  {% case category_product.status %}
+                    {% when 'active' %}
+                      {% if category_product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+                    {% when 'sold-out' %}
+                      {% assign product_status = 'Sold out' %}
+                    {% when 'coming-soon' %}
+                      {% assign product_status = 'Coming soon' %}
+                  {% endcase %}
+                  {% if product.id != category_product.id %}
+                    <a class="product-list-item {{ theme.show_overlay }}" href="{{ category_product.url }}" title="View {{ category_product.name | escape }}">
+                      <div class="product-list-item-container">
+                        <figure class="product-list-image-container">
+                          <img alt="Image of {{ category_product.name | escape }}" class="product-list-image" src="{{ category_product.image | product_image_url | constrain: 1000, 1000 }}">
+                          {% if product_status != blank %}<div class="product-list-item-status">{{ product_status }}</div>{% endif %}
+                        </figure>
+                        <div class="product-list-item-info">
+                          <div class="product-list-item-info-headers">
+                            <div class="product-list-item-name">{{ category_product.name }}</div>
+                            <div class="product-list-item-price">{{ category_product.default_price | money: theme.money_format }}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              {% endcapture %}
+            {% endfor %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+      {% if product_divs != blank %}
+        <div class="all-similar-products">{{ product_divs }}</div>
+        <div class="similar-products gradient">
+          <div class="similar-products-header">
+            <div class="similar-products-title">Related products</div>
+          </div>
+          <div class="product-list similar-product-list"></div>
+        </div>
+      {% endif %}
+    <footer>
+      <div class="footer-section footer-store-name">
+        {{ store.name }}
+      </div>
+      <div class="footer-section footer-nav">
+        <ul class="unstyled footer-links">
+          <li><a href="/" title="Home">Home</a></li>
+          <li><a href="/products" title="Products">Products</a></li>
+          <li class="hide-mobile"><a href="/cart" title="Home">Cart</a></li>
+          {% for page in pages.all %}
+            <li>{{ page | link_to }}</li>
+          {% endfor %}
+          <li><a href="/contact" title="Contact">Contact</a></li>
+          {% if store.website != blank %}
+            <li><a href="{{ store.website }}">Back to Site</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="footer-section footer-social">
+        {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank %}
+          <ul class="unstyled social-links">
+            {% if theme.twitter_url != blank %}
+              <li><a title="Twitter" href="{{ theme.twitter_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 150.857 612 490.298"><path d="M606 209c-22.2 9.7-46 16.4-70.8 19.4 25.4-15.3 45-39.6 54-68.5-23.7 14-50 24-78 30-22.5-24-54.4-39-89.8-39-68 0-123 55-123 123 0 9.3 1 19 3 28-102.2-5-192.8-54-253.4-129-11 18.3-17 39.5-17 62.2 0 43 21.5 81 54.6 103-20.2-.6-39.2-6-55.8-15.4v2c0 60 42.3 110 98.6 121.2-10.4 3-21.3 4.6-32.5 4.6-8 0-16-1-23-2.5 15 49.3 61 85 115 86-42 33.3-96 53-153 53-10 0-20-.5-30-1.7 55 35 119.5 55.5 189 55.5 226.3 0 350-188.5 350-352 0-5.5 0-10.8-.3-16 24-17.6 45-39.4 61.4-64z"/></svg></a></li>
+            {% endif %}
+            {% if theme.facebook_url != blank %}
+              <li><a title="Facebook" href="{{ theme.facebook_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="157.162 90 297.799 612"><path d="M369.036 193.795h85.68V90H333.662c-97.553 19.707-98.776 108.936-98.776 108.936V304.69h-77.724v102.937h77.724V702H343.21V407.383h102.08l9.67-102.938H343.945v-75.52c-.123-33.172 25.092-35.13 25.092-35.13z"/></svg></a></li>
+            {% endif %}
+            {% if theme.instagram_url != blank %}
+              <li><a target="_blank" title="Instagram" href="{{ theme.instagram_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 90 612 612"><path d="M540.273 90H71.727C32.19 90 0 122.19 0 161.727v468.67C0 669.81 32.19 702 71.727 702h468.67c39.535 0 71.726-32.19 71.726-71.727V161.727C612 122.313 579.687 90 540.273 90zM306 280.332c63.893 0 115.668 51.775 115.668 115.668S369.893 511.668 306 511.668 190.332 459.893 190.332 396 242.107 280.332 306 280.332zM542.232 608.12c0 13.096-10.77 23.867-23.868 23.867H92.412c-13.097 0-23.868-10.77-23.868-23.868V348.51h56.304c-3.917 15.177-6.12 31.21-6.12 47.49 0 103.55 83.966 187.272 187.272 187.272S493.272 499.552 493.272 396c0-16.524-2.204-32.313-6.12-47.49h55.08v259.61zm0-353.002c0 13.097-10.77 23.868-23.868 23.868h-69.77c-13.096 0-23.867-10.77-23.867-23.868V185.35c0-13.097 10.77-23.868 23.868-23.868h69.77c13.096 0 23.867 10.77 23.867 23.868v69.768z"/></svg></a></li>
+            {% endif %}
+            {% if theme.tumblr_url != blank %}
+              <li><a title="Tumblr" href="{{ theme.tumblr_url }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="117.504 90 377.114 611.937"><path d="M493.272 571.276c-14.566 13.832-55.692 26.194-55.692 26.194-115.18 27.907-107.957-66.464-107.957-66.464v-189.72h144.31v-96.818h-144.31V90H241.74c-11.383 139.658-124.236 164.628-124.236 164.628v87.394h67.81v224.604c-.98 62.424 36.475 92.656 36.475 92.656 115.055 89.964 272.83 9.67 272.83 9.67v-99.02l-1.348 1.344z"/></svg></a></li>
+            {% endif %}
+            {% if theme.pinterest_url != blank %}
+            <li><a id="tiktok" target="_blank" title="TikTok" href="{{ theme.pinterest_url }}"/></li>
+            {% endif %}
+ 
+          </ul>
+        {% endif %}
+        <div class="bigcartel-credit">{{ bigcartel_credit }}</div>
+      </div>
+      </footer>
+    </div>
+    <div class="cursor gradient">
+      <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M218.101 38.101L198.302 57.9c-4.686 4.686-4.686 12.284 0 16.971L353.432 230H12c-6.627 0-12 5.373-12 12v28c0 6.627 5.373 12 12 12h341.432l-155.13 155.13c-4.686 4.686-4.686 12.284 0 16.971l19.799 19.799c4.686 4.686 12.284 4.686 16.971 0l209.414-209.414c4.686-4.686 4.686-12.284 0-16.971L235.071 38.101c-4.686-4.687-12.284-4.687-16.97 0z"></path></svg>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ 'api' | theme_js_url }}"></script>
+    <script>
+      var themeOptions = {
+        pageCategory: '{{ page.category }}',
+        pagePermalink: '{{ page.permalink }}',
+        primaryGradientColor: '{{ theme.primary_gradient_color }}',
+        secondaryGradientColor: '{{ theme.secondary_gradient_color }}'
+      };
+    </script>
+    <script src="{{ theme | theme_js_url }}"></script>
+    <script type="text/javascript">
+      var formatMoney = Format.money;
+      Format.money = function(number) {
+        {% case theme.money_format %}
+        {% when 'sign' %}
+          return formatMoney(number, true, true, false);
+        {% when 'code' %}
+          return formatMoney(number, true, false, true);
+        {% when 'sign_and_code' %}
+          return formatMoney(number, true, true, true);
+        {% endcase %}
+      };
+    </script>
+    {% if page.full_url contains '/product/' %}
+      <script>
+        var show_sold_out_product_options = '{{ theme.show_sold_out_product_options }}';
+        Product.find('{{ product.permalink }}', processProduct)
+      </script>
+    {% endif %}
+
+  </body>
+</html>
